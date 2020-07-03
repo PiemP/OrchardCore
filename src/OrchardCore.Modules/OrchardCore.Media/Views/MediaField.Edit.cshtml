@@ -7,8 +7,6 @@
     var modalMediaId = "Modal" + Html.IdFor(m => m);
 }
 
-<partial name="Shared/MediaFieldEditResources.cshtml" />
-
 <script at="Foot">
     initializeMediaApplication(false,  '@Url.Action("MediaApplication", "Admin", new { area = "OrchardCore.Media" })', '@Context.Request.PathBase.ToString()');
     initializeMediaField(
@@ -70,5 +68,3 @@
         </div>
     </div>
 </div>
-
-<partial name="Shared/MediaFieldEditLocalization.cshtml" />

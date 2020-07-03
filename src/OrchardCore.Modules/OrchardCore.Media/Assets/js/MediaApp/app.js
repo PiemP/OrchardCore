@@ -10,7 +10,10 @@ var root = {
 
 var bus = new Vue();
 
+
+
 function initializeMediaApplication(displayMediaApplication, mediaApplicationUrl, pathBase) {
+
     if (initialized) {
         return;
     }
@@ -156,6 +159,11 @@ function initializeMediaApplication(displayMediaApplication, mediaApplicationUrl
                                     return self.sortAsc ? a.mime.toLowerCase().localeCompare(b.mime.toLowerCase()) : b.mime.toLowerCase().localeCompare(a.mime.toLowerCase());
                                 });
                                 break;
+                            case 'lastModify':
+                                filtered.sort(function (a, b) {
+                                    return self.sortAsc ? a.lastModify - b.lastModify : b.lastModify - a.lastModify;
+                                });
+                                break;
                             default:
                                 filtered.sort(function (a, b) {
                                     return self.sortAsc ? a.name.toLowerCase().localeCompare(b.name.toLowerCase()) : b.name.toLowerCase().localeCompare(a.name.toLowerCase());
@@ -170,7 +178,7 @@ function initializeMediaApplication(displayMediaApplication, mediaApplicationUrl
                         return result;
                     },
                     thumbSize: function () {
-                        return this.smallThumbs ? 100 : 240;
+                        return this.smallThumbs ? 160 : 240 ;
                     },
                     currentPrefs: {
                         get: function () {
@@ -345,6 +353,7 @@ function initializeMediaApplication(displayMediaApplication, mediaApplicationUrl
                         }});
                     },
                     deleteMediaItem: function (media) {
+
                         var self = this;
                         if (!media) {
                             return;
