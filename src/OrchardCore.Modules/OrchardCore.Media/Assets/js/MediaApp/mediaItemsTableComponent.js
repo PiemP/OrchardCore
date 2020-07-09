@@ -54,6 +54,9 @@ Vue.component('media-items-table', {
                             <div class="text-col"> {{ printDateTime(media.lastModify) }} </div> 
                             </td>
                             <td>
+                                <div class="text-col"> {{ printDateTime(media.lastModify) }} </div>
+                            </td>
+                            <td>
                                 <div class="text-col optional-col"> {{ isNaN(media.size)? 0 : Math.round(media.size / 1024) }} KB</div>
                             </td>
                             <td>
