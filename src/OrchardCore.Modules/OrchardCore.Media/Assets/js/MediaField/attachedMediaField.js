@@ -13,8 +13,8 @@ function initializeAttachedMediaField(el, idOfUploadButton, uploadAction, mediaI
             mediaItems: [],
             selectedMedia: null,
             smallThumbs: false,
-            initialized: false,
-            idPrefix: idprefix
+            idPrefix: idprefix,
+            initialized: false
         },
         created: function () {
             var self = this;
@@ -146,7 +146,7 @@ function initializeAttachedMediaField(el, idOfUploadButton, uploadAction, mediaI
                 done: function (e, data) {
                     var newMediaItems = [];
                     var errormsg = "";
-
+                    
                     if (data.result.files.length > 0) {
                         for (var i = 0; i < data.result.files.length; i++) {
                             data.result.files[i].isNew = true;
@@ -156,6 +156,11 @@ function initializeAttachedMediaField(el, idOfUploadButton, uploadAction, mediaI
                             else
                                 errormsg += data.result.files[i].error + "\n";
                         }
+                    }
+                    
+                    if (errormsg !== "") {
+                        alert(errormsg);
+                        return;
                     }
 
                     if (errormsg !== "") {
@@ -206,7 +211,7 @@ function initializeAttachedMediaField(el, idOfUploadButton, uploadAction, mediaI
                     if (this.mediaItems.length === 1) {
                         removed = this.mediaItems[index];
                         removed.isRemoved = true;
-                        //this.mediaItems.splice(0, 1, removed);
+                        //this.mediaItems.splice(0, 1, removed);                        
                         this.mediaItems.splice(0, 1);
                     }
                 }
