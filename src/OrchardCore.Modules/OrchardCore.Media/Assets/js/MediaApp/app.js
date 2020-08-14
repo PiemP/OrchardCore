@@ -35,7 +35,7 @@ function initializeMediaApplication(displayMediaApplication, mediaApplicationUrl
             mediaApp = new Vue({
                 el: '#mediaApp',
                 data: {
-                    selectedFolder: root,
+                    selectedFolder: {},
                     mediaItems: [],
                     selectedMedias: [],
                     errors: [],
@@ -120,6 +120,11 @@ function initializeMediaApplication(displayMediaApplication, mediaApplicationUrl
                         self.itemsInPage = itemsInPage;
                         self.selectedMedias = [];
                     });                                                          
+
+                    if (!localStorage.getItem('mediaApplicationPrefs')) {
+                        self.selectedFolder = root
+                        return;
+                    }
 
                     self.currentPrefs = JSON.parse(localStorage.getItem('mediaApplicationPrefs'));
                 },
